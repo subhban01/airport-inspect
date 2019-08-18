@@ -20,3 +20,14 @@ header{
     min-height: 100vh;
     border-top: 5px solid #e40000;
 }
+
+.spinner-border-sm{
+    width: 4rem;
+    height: 4rem;
+    display: block;
+    margin: 30% auto;
+}
+
+.text-danger{
+    color: #e40000!important;
+}

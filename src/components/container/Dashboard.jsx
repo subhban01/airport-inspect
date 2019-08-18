@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ListView from '../presentational/ListView';
 import './Dashboard.scss';
 import { getAirportDetails } from '../../repos/AirportDetailsRepo';
-import Pagination from 'react-bootstrap/Pagination';
+import { Pagination, Spinner } from 'react-bootstrap';
 
 
 export default class Dashboard extends Component {
@@ -10,6 +10,8 @@ export default class Dashboard extends Component {
         super();
         this.state = {
             airports: [],
+            fetching: true,
+            active: 1,
         };
     }
 
@@ -18,6 +20,7 @@ export default class Dashboard extends Component {
             .then((response) => {
                 this.setState({
                     airports: response.data,
+                    fetching: false,
                 });
             })
             .catch((err) => {
@@ -26,11 +29,28 @@ export default class Dashboard extends Component {
     }
 
     render() {
-        const { airports } = this.state;
+        const { airports, fetching } = this.state;
         return (
             <div className="container">
                 <header>Airport Inspector</header>
-                <ListView airports={airports} />
+                {
+                    fetching
+                        ? (
+                            <Spinner animation="border" role="status" variant="danger" size="sm">
+                                <span className="sr-only">Loading...</span>
+                            </Spinner>
+                        )
+                        : (
+                            <React.Fragment>
+                                <ListView airports={airports} />
+                                <Pagination>
+                                    <Pagination.Item>{10}</Pagination.Item>
+                                    <Pagination.Item>{11}</Pagination.Item>
+                                    <Pagination.Ellipsis />
+                                </Pagination>
+                            </React.Fragment>
+                        )
+                }
             </div>
         );
     }
