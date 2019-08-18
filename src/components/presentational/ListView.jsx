@@ -9,7 +9,7 @@ export default function ListView(props) {
                 {`${props.airport.airportName}  (${props.airport.airportCode}) / `}
                 <strong>{`${props.airport.city.cityName},  ${props.airport.country.countryName}`}</strong>
             </div>
-            <div className="button-col"> &gt;
+            <div className="button-col"> Details
             </div>
         </div>
     );
