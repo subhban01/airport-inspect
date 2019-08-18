@@ -1,1 +1,29 @@
-.listview-container{}
+.listview-container{
+    background-color: #4f4f4f;
+    border-radius: 5px;
+    height: 80px;
+    margin-top: 10px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-col{
+    line-height: 80px;
+}
+
+.button-col{
+    height: 50px;
+    width: 80px;
+    background-color: #e40000;
+    border-radius: 5px;
+    margin: 15px 0;
+    font-size: 22px;
+    padding: 0 34px;
+    line-height: 50px;
+    font-weight: 900;
+
+    &:hover{
+        cursor: pointer;
+    }
+}

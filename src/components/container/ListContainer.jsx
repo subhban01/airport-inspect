@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ListView from '../presentational/ListView';
 import Pagination from 'react-js-pagination';
 import {ITEMS_PER_PAGE, PAGE_RANGE_DISPLAYED} from '../../constants/Constants';
+import './ListContainer.scss';
 
 
 export default class ListContainer extends Component {

@@ -5,7 +5,12 @@ import './ListView.scss';
 export default function ListView(props) {
     return (
         <div className="listview-container">
-            {props.airport.airportName}
+            <div className="text-col">
+                {`${props.airport.airportName}  (${props.airport.airportCode}) / `}
+                <strong>{`${props.airport.city.cityName},  ${props.airport.country.countryName}`}</strong>
+            </div>
+            <div className="button-col"> &gt;
+            </div>
         </div>
     );
 }
