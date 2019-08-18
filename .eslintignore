@@ -1,4 +1,4 @@
-tests
+__tests__
 webpack.config.js
 public
 node_modules

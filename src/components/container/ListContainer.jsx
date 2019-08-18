@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ListView from '../presentational/ListView';
 import Pagination from 'react-js-pagination';
-import {ITEMS_PER_PAGE, PAGE_RANGE_DISPLAYED} from '../../constants/Constants';
+import ListView from '../presentational/ListView';
+import { ITEMS_PER_PAGE, PAGE_RANGE_DISPLAYED } from '../../constants/Constants';
 import './ListContainer.scss';
 
 
@@ -19,21 +19,24 @@ export default class ListContainer extends Component {
         if (this.props.airports !== prevProps.airports) {
             this.setState({
                 airports: this.props.airports,
-                totalCount: this.props.airports.length
+                totalCount: this.props.airports.length,
             });
         }
     }
 
     handlePageChange(pageNumber) {
         console.log(`active page is ${pageNumber}`);
-        this.setState({activePage: pageNumber});
+        this.setState({
+            activePage: pageNumber,
+            start: pageNumber * ITEMS_PER_PAGE,
+        });
     }
 
     render() {
-        let {
+        const {
             activePage, totalCount, start,
         } = this.state;
-        let { airports } = this.props;
+        const { airports } = this.props;
 
         return (
             <React.Fragment>
