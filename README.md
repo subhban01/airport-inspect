@@ -2,7 +2,7 @@
 Single page application using React, that gives customers the ability to view which airports Qantas currently operates from.
 
 ### Demo
-For a live demo visit https://subhban01.github.io/airport-inspect
+For a live demo visit https://subhban01.github.io/airport-viewer
 
 ### Environment setup
 

@@ -8,6 +8,9 @@ export default function DetailsModal(props) {
     const { cityCode, cityName, timeZoneName } = props.airport.city;
     const { countryName, countryCode } = props.airport.country;
     const { regionName } = props.airport.region;
+    const {
+        latitude, longitude, aboveSeaLevel, latitudeDirection, longitudeDirection,
+    } = props.airport.location;
 
 
     return (
@@ -25,36 +28,53 @@ export default function DetailsModal(props) {
             <Modal.Body>
                 <ul>
                     <li>
-airportCode:
-                        <strong>{airportCode}</strong>
+Airport Name:&nbsp;
+                        <strong>{airportName || 'N/A'}</strong>
                     </li>
                     <li>
-eticketableAirport:
-                        <strong>{eticketableAirport}</strong>
+Airport Code:&nbsp;
+                        <strong>{airportCode || 'N/A'}</strong>
                     </li>
                     <li>
-airportName:
-                        <strong>{airportName}</strong>
+City:&nbsp;
+                        <strong>{cityName || 'N/A'}</strong>
                     </li>
                     <li>
-cityName:
-                        <strong>{cityName}</strong>
+Coordinates:&nbsp;
+                        <strong>
+                            {latitude}
+                            {' '}
+&deg;
+                            {' '}
+                            {latitudeDirection}
+,
+                            {' '}
+                            {longitude}
+                            {' '}
+&deg;
+                            {' '}
+                            {longitudeDirection}
+                        </strong>
                     </li>
                     <li>
-timeZoneName:
-                        <strong>{timeZoneName}</strong>
+Above Sea Level:&nbsp;
+                        <strong>{aboveSeaLevel || 'N/A'}</strong>
                     </li>
                     <li>
-countryName:
-                        <strong>{countryName}</strong>
+Time Zone:&nbsp;
+                        <strong>{timeZoneName || 'N/A'}</strong>
                     </li>
                     <li>
-countryCode:
-                        <strong>{countryCode}</strong>
+Country:&nbsp;
+                        <strong>{countryName || 'N/A'}</strong>
                     </li>
                     <li>
-regionName:
-                        <strong>{regionName}</strong>
+Country Code:&nbsp;
+                        <strong>{countryCode || 'N/A'}</strong>
+                    </li>
+                    <li>
+Region:&nbsp;
+                        <strong>{regionName || 'N/A'}</strong>
                     </li>
                 </ul>
             </Modal.Body>

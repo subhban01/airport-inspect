@@ -33,7 +33,7 @@ export default class Dashboard extends Component {
         } = this.state;
         return (
             <div className="container">
-                <header>Airport Inspector</header>
+                <header>Airport Viewer</header>
                 {
                     fetching
                         ? (
