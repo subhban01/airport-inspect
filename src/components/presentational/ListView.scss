@@ -19,8 +19,7 @@
 }
 
 .button-col{
-    height: 50px;
-    width: 120px;
+    padding: 0 30px;
     background-color: #e40000;
     border-radius: 5px;
     margin: 15px 0;
@@ -29,5 +28,23 @@
 
     &:hover{
         cursor: pointer;
+    }
+}
+
+@media (max-width: 420px){
+    .button-col{
+        padding: 0 10px;
+        line-height: 70px;
+    }
+
+    .text-col{
+        div:nth-child(1){
+            font-size: 16px;
+            padding-top: 30px;
+        }
+    }
+
+    .listview-container{
+        height: 100px;
     }
 }

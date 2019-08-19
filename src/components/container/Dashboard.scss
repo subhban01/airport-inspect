@@ -20,3 +20,11 @@ header{
     min-height: 100vh;
     border-top: 8px solid #e40000;
 }
+
+@media (max-width: 420px){
+    .container{
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+    }
+}
