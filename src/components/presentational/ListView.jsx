@@ -1,27 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './ListView.scss';
 
 
-export default function ListView(props) {
-    const airportName = props.airport.airportName ? props.airport.airportName : 'N/A';
-    const airportCode = props.airport.airportCode ? props.airport.airportCode : 'N/A';
-    const cityName = props.airport.city.cityName ? props.airport.city.cityName : 'N/A';
-    const countryName = props.airport.country.countryName ? props.airport.country.countryName : 'N/A';
+export default class ListView extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-    return (
-        <div className="listview-container">
-            <div className="text-col">
-                <div>
-                    <strong>{`${airportName}  (${airportCode})`}</strong>
+    openModal = () => {
+        this.props.openModal(this.props.index);
+    }
+
+    render() {
+        let { airportName, airportCode } = this.props.airport;
+        let { cityName } = this.props.airport.city;
+        let { countryName } = this.props.airport.country;
+        airportName = airportName || 'N/A';
+        airportCode = airportCode || 'N/A';
+        cityName = cityName || 'N/A';
+        countryName = countryName || 'N/A';
+
+        return (
+            <div className="listview-container">
+                <div className="text-col">
+                    <div>
+                        <strong>{`${airportName}  (${airportCode})`}</strong>
+                    </div>
+                    <div>
+                        {`${cityName},  ${countryName}`}
+                    </div>
                 </div>
-                <div>
-                    {`${cityName},  ${countryName}`}
-                </div>
+                <div className="button-col" onClick={this.openModal}>Details</div>
             </div>
-            <div className="button-col">
-                {' '}
-Details
-            </div>
-        </div>
-    );
+        );
+    }
 }
