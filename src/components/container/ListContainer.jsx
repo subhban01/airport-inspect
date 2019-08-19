@@ -11,7 +11,7 @@ export default class ListContainer extends Component {
         super(props);
         this.state = {
             activePage: 1,
-            totalCount: this.props.airports.length,
+            totalCount: this.props.airports.length || 0,
             start: 0,
             isOpen: false,
             openModalIndex: 0,

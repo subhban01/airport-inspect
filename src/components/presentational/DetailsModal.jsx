@@ -4,8 +4,8 @@ import './DetailsModal.scss';
 
 
 export default function DetailsModal(props) {
-    const { airportCode, eticketableAirport, airportName } = props.airport;
-    const { cityCode, cityName, timeZoneName } = props.airport.city;
+    const { airportCode, airportName } = props.airport;
+    const { cityName, timeZoneName } = props.airport.city;
     const { countryName, countryCode } = props.airport.country;
     const { regionName } = props.airport.region;
     const {
