@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Pagination from 'react-js-pagination';
+import PropTypes from 'prop-types';
 import ListView from '../presentational/ListView';
 import { ITEMS_PER_PAGE, PAGE_RANGE_DISPLAYED } from '../../constants/Constants';
 import './ListContainer.scss';
@@ -9,9 +10,10 @@ import DetailsModal from '../presentational/DetailsModal';
 export default class ListContainer extends Component {
     constructor(props) {
         super(props);
+        const { airports } = this.props;
         this.state = {
             activePage: 1,
-            totalCount: this.props.airports.length || 0,
+            totalCount: airports.length || 0,
             start: 0,
             isOpen: false,
             openModalIndex: 0,
@@ -19,32 +21,31 @@ export default class ListContainer extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.airports !== prevProps.airports) {
+        const { airports } = this.props;
+        if (airports !== prevProps.airports) {
             this.setState({
-                airports: this.props.airports,
-                totalCount: this.props.airports.length,
+                totalCount: airports.length,
             });
         }
     }
 
-    handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
+    hideModal = () => {
         this.setState({
-            activePage: pageNumber,
-            start: (pageNumber - 1) * ITEMS_PER_PAGE,
+            isOpen: false,
         });
     }
 
-    openModal(index) {
+    openModal = (index) => {
         this.setState({
             isOpen: true,
             openModalIndex: index,
         });
     }
 
-    hideModal = () => {
+    handlePageChange = (pageNumber) => {
         this.setState({
-            isOpen: false,
+            activePage: pageNumber,
+            start: (pageNumber - 1) * ITEMS_PER_PAGE,
         });
     }
 
@@ -71,7 +72,7 @@ export default class ListContainer extends Component {
                                     airport={airport}
                                     index={index}
                                     key={airport.airportName + airport.location.latitude + airport.location.longitude}
-                                    openModal={this.openModal.bind(this)}
+                                    openModal={this.openModal}
                                 />
                             );
                         }
@@ -80,7 +81,7 @@ export default class ListContainer extends Component {
                 <Pagination
                     itemsCountPerPage={ITEMS_PER_PAGE}
                     totalItemsCount={totalCount}
-                    onChange={this.handlePageChange.bind(this)}
+                    onChange={this.handlePageChange}
                     activePage={activePage}
                     pageRangeDisplayed={PAGE_RANGE_DISPLAYED}
                 />
@@ -88,3 +89,7 @@ export default class ListContainer extends Component {
         );
     }
 }
+
+ListContainer.propTypes = {
+    airports: PropTypes.array.isRequired,
+};

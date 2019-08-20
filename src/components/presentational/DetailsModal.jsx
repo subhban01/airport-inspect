@@ -1,16 +1,18 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './DetailsModal.scss';
+import PropTypes from 'prop-types';
 
 
 export default function DetailsModal(props) {
-    const { airportCode, airportName } = props.airport;
-    const { cityName, timeZoneName } = props.airport.city;
-    const { countryName, countryCode } = props.airport.country;
-    const { regionName } = props.airport.region;
+    const { airport, onHide } = props;
+    const { airportCode, airportName } = airport;
+    const { cityName, timeZoneName } = airport.city;
+    const { countryName, countryCode } = airport.country;
+    const { regionName } = airport.region;
     const {
         latitude, longitude, aboveSeaLevel, latitudeDirection, longitudeDirection,
-    } = props.airport.location;
+    } = airport.location;
 
 
     return (
@@ -79,8 +81,13 @@ Region:&nbsp;
                 </ul>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Back</Button>
+                <Button onClick={onHide}>Back</Button>
             </Modal.Footer>
         </Modal>
     );
 }
+
+DetailsModal.propTypes = {
+    airport: PropTypes.object.isRequired,
+    onHide: PropTypes.func.isRequired,
+};
