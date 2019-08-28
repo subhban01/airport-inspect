@@ -1,5 +1,5 @@
 # Airport Inspector
-Single page application using React, that gives customers the ability to view which airports Qantas currently operates from.
+Single page application using React, that gives customers the ability to view airports details from around the world.
 1. Display optimized for both desktop & mobile devices.
 2. Displays additional airport details on modal popup.
 3. Pagination enabled for easier viewability.
